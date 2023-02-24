@@ -14,6 +14,8 @@ public class Hammer : MonoBehaviour
     public MMF_Player enemyFeedback;
     public MMF_Player enemyProximityFeedback;
     public MMF_Player hitSoundFeedback;
+    public MMF_Player releaseFeedback;
+    public MMF_Player selectFeedback;
 
     private void Start()
     {
@@ -39,6 +41,7 @@ public class Hammer : MonoBehaviour
         MMTimeScaleEvent.Trigger(MMTimeScaleMethods.For, 0f, 1f, true, 10f, true);
         //Time.timeScale = 0f;
         DragParticles.SetActive(true);
+        selectFeedback.PlayFeedbacks();
     }
     private void OnMouseUp()
     {
@@ -72,6 +75,8 @@ public class Hammer : MonoBehaviour
 
         rb.AddForce(forceVector, ForceMode2D.Impulse);
         rb.AddTorque(rb.totalTorque * 3 + 5);
+
+        releaseFeedback.PlayFeedbacks();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
