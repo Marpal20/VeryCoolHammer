@@ -13,6 +13,7 @@ public class Hammer : MonoBehaviour
     public MMF_Player hitFeedback;
     public MMF_Player enemyFeedback;
     public MMF_Player enemyProximityFeedback;
+    public MMF_Player hitSoundFeedback;
 
     private void Start()
     {
@@ -77,6 +78,8 @@ public class Hammer : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
             enemyFeedback.PlayFeedbacks();
+        else
+            hitSoundFeedback.PlayFeedbacks();
 
         feedback.PlayFeedbacks();
         hitFeedback.transform.position = collision.GetContact(0).point;
