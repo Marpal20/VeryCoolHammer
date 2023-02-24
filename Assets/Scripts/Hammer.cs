@@ -71,8 +71,9 @@ public class Hammer : MonoBehaviour
         throwVector.y -= transform.position.y;
 
 
-        Vector2 forceVector = Vector2.ClampMagnitude(throwVector, 2) * throwPower * -1;
+        Vector2 forceVector = Vector2.ClampMagnitude(throwVector, 1) * throwPower * -1;
 
+        rb.totalForce = Vector2.zero;
         rb.AddForce(forceVector, ForceMode2D.Impulse);
         rb.AddTorque(rb.totalTorque * 3 + 5);
 
